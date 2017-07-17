@@ -49,12 +49,11 @@
     <abstract>
       <t>
 
-        RFC7934, the IPv6 Host Address Availability Recommendations Best
-        Current Practice, describes why IPv6 hosts should use multiple
+        The IPv6 Host Address Availability Recommendations Best Current
+        Practice (RFC 7934), describes why IPv6 hosts should use multiple
         global addresses when attaching to a network.  This document updates
-        this RFC by removing a recommendation for networks to give the host
-        the ability to use new addresses without requiring explicit
-        requests.
+        RFC 7934 by removing a recommendation for networks to give the host the
+        ability to use new addresses without requiring explicit requests.
 
       </t>
     </abstract>
