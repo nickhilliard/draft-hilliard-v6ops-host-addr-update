@@ -77,7 +77,7 @@
         The IPv6 Host Address Availability Recommendations Best Current
         Practice document <xref target="RFC7934" /> describes why IPv6 hosts
         should use multiple global addresses when attaching to a network. 
-        The recommendations in Section 8 included the text:
+        The recommendations in Section 8 of this document included the text:
         
       </t>
 
@@ -94,7 +94,10 @@
 
         This text could be interpreted as recommending that IPv6 networks
         should not use not DHCPv6 <xref target="RFC3736" />, which provides
-        new addresses in response to explicit requests.  
+        new addresses in response to explicit requests.  This interpretation
+        is based on the fact that a host which uses DHCPv6 IA_NA or IA_TA
+        cannot use new addresses without requesting them from a DHCPv6
+        server on the network.
 
       </t>
 
