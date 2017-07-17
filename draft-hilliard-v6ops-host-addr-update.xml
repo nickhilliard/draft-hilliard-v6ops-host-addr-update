@@ -148,6 +148,18 @@
 
       <t>
 
+        The IPv6 self-selection addressing model does not necessarily suit
+        the deployment requirements for many types of ipv6 networks,
+        including enterprise, provider hosting, and various access network
+        protocols (e.g.  docsis / gpon / ipoe); if the status of DHCPv6 were
+        changed to "NOT RECOMMENDED", then there would be no recommended
+        IETF model for stateful / operator-assigned IPv6 addressing, and
+        this would leave a glaring hole in the IPv6 host specification.
+
+      </t>
+
+      <t>
+
         The subsequent sentences in the second paragraph provide
         alternatives to DHCPv6, and are superfluous in the absence of the
         first paragraph.
