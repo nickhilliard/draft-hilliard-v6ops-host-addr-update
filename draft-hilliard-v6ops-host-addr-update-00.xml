@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd">
+<?rfc toc="yes"?>
+<?rfc tocompact="yes"?>
+<?rfc tocdepth="3"?>
+<?rfc tocindent="yes"?>
+<?rfc symrefs="yes"?>
+<?rfc sortrefs="yes"?>
+<?rfc comments="yes"?>
+<?rfc inline="yes"?>
+<?rfc compact="yes"?>
+<?rfc subcompact="no"?>
+<rfc category="bcp" seriesNo="204" docName="draft-hilliard-v6ops-host-addr-update-00" ipr="trust200902" updates="7934">
+  <front>
+    <title abbrev="IPv6 Host Address Update">Update for IPv6 Host Address Availability Recommendations</title>
+
+    <author initials="N" surname="Hilliard" fullname="Nick Hilliard">
+      <organization>INEX</organization>
+      <address>
+        <postal>
+          <street>4027 Kingswood Road</street>
+          <city>Dublin</city>
+          <code>24</code>
+          <country>IE</country>
+        </postal>
+        <email>nick@inex.ie</email>
+      </address>
+    </author>
+
+    <author fullname="Job Snijders" initials="J." surname="Snijders">
+      <organization abbrev="NTT">NTT Communications</organization>
+      <address>
+        <postal>
+          <street>Theodorus Majofskistraat 100</street>
+          <code>1065 SZ</code>
+          <city>Amsterdam</city>
+          <country>The Netherlands</country>
+        </postal>
+        <email>job@ntt.net</email>
+      </address>
+    </author>
+
+    <date/>
+
+    <area>Ops</area>
+    <workgroup>v6ops</workgroup>
+    <keyword>DHCPv6</keyword>
+
+    <abstract>
+      <t>
+
+        The IPv6 Host Address Availability Recommendations Best Current
+        Practice (RFC 7934), describes why IPv6 hosts should use multiple
+        global addresses when attaching to a network.  This document updates
+        RFC 7934 by removing a recommendation for networks to give the host the
+        ability to use new addresses without requiring explicit requests.
+
+      </t>
+    </abstract>
+
+    <note title="Requirements Language">
+      <t>
+        The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+        "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in
+        this document are to be interpreted as described in
+        <xref target="RFC2119" />.
+      </t>
+    </note>
+
+  </front>
+
+  <middle>
+    <section title="Introduction">
+      <t>
+
+        The IPv6 Host Address Availability Recommendations Best Current
+        Practice document <xref target="RFC7934" /> describes why IPv6 hosts
+        should use multiple global addresses when attaching to a network. 
+        The recommendations in Section 8 of this document included the text:
+        
+      </t>
+
+      <t><list><t>
+
+        Due to the drawbacks imposed by requiring explicit requests for
+        address space (see Section 4), it is RECOMMENDED that the network
+        give the host the ability to use new addresses without requiring
+        explicit requests.
+
+      </t></list></t>
+
+      <t>
+
+        This text could be interpreted as recommending that IPv6 networks
+        should not use not DHCPv6 <xref target="RFC3736" />, which provides
+        new addresses in response to explicit requests.  This interpretation
+        is based on the fact that a host which uses DHCPv6 IA_NA or IA_TA
+        cannot use new addresses without requesting them from a DHCPv6
+        server on the network.
+
+      </t>
+
+    </section>
+
+    <section title="Updates to RFC7934">
+      <t>
+
+        This document updates <xref target="RFC7934" /> to remove the second
+        and third paragraphs of Section 8, so that the recommendations
+        section of <xref target="RFC7934" /> reads in its entirety as
+        follows:
+        
+      </t>
+
+      <t><list><t>
+
+        In order to avoid the problems described above and preserve the
+        Internet's ability to support new applications that use more than
+        one IPv6 address, it is RECOMMENDED that IPv6 network deployments
+        provide multiple IPv6 addresses from each prefix to general-purpose
+        hosts.  To support future use cases, it is NOT RECOMMENDED to impose
+        a hard limit on the size of the address pool assigned to a host. 
+        Particularly, it is NOT RECOMMENDED to limit a host to only one IPv6
+        address per prefix.
+   
+      </t></list></t>
+
+    </section>
+
+    <section title="Rationale">
+
+      <t>
+
+        It has been argued in the v6ops Working Group that the first
+        sentence second paragraph technically relegates the status of DHCPv6
+        to "NOT RECOMMENDED" on IPv6 networks, as it formally recommends
+        that new addresses should be assigned without explicit requests. 
+        This implicitly excludes all address assignment mechanisms,
+        including DHCPv6, which are not handled by the host itself.  A
+        change of this form to the status of DHCPv6 would be a serious and
+        substantial change to the status of DHCPv6 at the IETF, and not one
+        that could or should have been entertained without extensive debate
+        as to whether it was an appropriate move to make.  This debate never
+        happened and the justification provided in section 4 of <xref
+        target="RFC7934" /> is insufficient per-se to warrant changing the
+        recommendation status of such a widely-deployed Standards Track
+        protocol as DHCPv6.
+
+      </t>
+
+      <t>
+
+        The IPv6 self-selection addressing model does not necessarily suit
+        the deployment requirements for many types of ipv6 networks,
+        including enterprise, provider hosting, and various access network
+        protocols (e.g.  docsis / gpon / ipoe); if the status of DHCPv6 were
+        changed to "NOT RECOMMENDED", then there would be no recommended
+        IETF model for stateful / operator-assigned IPv6 addressing, and
+        this would leave a glaring hole in the IPv6 host specification.
+
+      </t>
+
+      <t>
+
+        The subsequent sentences in the second paragraph provide
+        alternatives to DHCPv6, and are superfluous in the absence of the
+        first paragraph.
+
+      </t>
+
+      <t>
+
+        The third paragraph notes that DHCPv6 stateful address assignment
+        (IA_NA or IA_TA) can be used to provide multiple addresses when the
+        host connects to the network, but does not mention that the host can
+        issue multiple dhcpv6 requests, thereby allowing arbitrary numbers
+        of assignments rather than the stated limit of approximately 30.  As
+        the text in this paragraph is incorrect, it too has been removed.
+
+      </t>
+
+    </section>
+
+    <section title="IANA Considerations">
+      <t>
+
+        There are no IANA considerations.
+
+      </t>
+    </section>
+
+<!--
+    <section title="Acknowledgments">
+        <t>
+
+            The authors would like to thank XXX for their support,
+            insightful review and comments.
+
+        </t>
+    </section>
+-->
+
+  </middle>
+
+  <back>
+      <references title="Normative References">
+          <?rfc include="reference.RFC.2119"?>
+          <?rfc include="reference.RFC.3736"?>
+          <?rfc include="reference.RFC.7934"?>
+      </references>
+  </back>
+</rfc>
